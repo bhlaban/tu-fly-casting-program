@@ -21,7 +21,14 @@ A feature is not complete unless exported PDF pages are readable, unclipped, and
 
 ### V. Reproducible Publishing Workflow
 The repository MUST support deterministic PDF generation from Markdown in a documented build workflow.
-Pandoc-compatible output settings SHOULD be used to keep local and CI exports consistent.
+Pandoc is the default exporter and SHOULD be used to keep local and CI outputs consistent.
+
+## Approved Toolchain Policy
+
+- Default path: Markdown + SVG + Pandoc-based PDF export.
+- Alternate exporters are allowed only when they are documented and produce deterministic output.
+- Any alternate exporter MUST pass all print quality gates defined in this constitution.
+- If a toolchain change affects output fidelity, it MUST be introduced through a constitution amendment and validated on at least one level and one ACA event.
 
 ## Content And Layout Standards
 
@@ -45,4 +52,4 @@ This constitution supersedes conflicting conventions in feature specs, plans, an
 Changes to print standards, source-of-truth rules, or required quality gates require an explicit constitution amendment.
 All pull requests and implementation reviews MUST verify constitution compliance.
 
-**Version**: 1.0.0 | **Ratified**: 2026-05-26 | **Last Amended**: 2026-05-26
+**Version**: 1.1.0 | **Ratified**: 2026-05-26 | **Last Amended**: 2026-05-26
