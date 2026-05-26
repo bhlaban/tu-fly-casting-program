@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tu-fly-casting.local/schemas/canonical-catalog.schema.json",
+  "title": "CanonicalCatalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "levels", "acaEventCards"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "levels": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^Level (?:[1-9]|10|11)$"
+      }
+    },
+    "acaEventCards": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "ACA Dry Fly Event",
+          "ACA Trout Fly Event",
+          "ACA Bass Bugger Event",
+          "ACA Fly Angler's Distance Event"
+        ]
+      }
+    }
+  }
+}

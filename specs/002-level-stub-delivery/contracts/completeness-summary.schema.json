@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tu-fly-casting.local/schemas/completeness-summary.schema.json",
+  "title": "CompletenessSummary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bundleId",
+    "status",
+    "requiredArtifacts",
+    "missingArtifacts",
+    "validatedAt"
+  ],
+  "properties": {
+    "bundleId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["PASS", "FAIL"]
+    },
+    "requiredArtifacts": {
+      "type": "array",
+      "minItems": 15,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "missingArtifacts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "validatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "PASS"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "missingArtifacts": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ]
+}
